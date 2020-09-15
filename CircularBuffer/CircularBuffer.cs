@@ -5,19 +5,53 @@ namespace CircularBuffer
 {
     public class CircularBuffer
     {
+        public int Newest { get; set; } = 0;
+        public object[] Buffer { get; set;}
+
+
 
         public bool CreateBuffer(int size)
         {
-            if ((size <= 2147483647) && (size > 0)) 
+
+            if (size > 0) 
             {
-                Console.WriteLine("I work");
+                Buffer = new object[size];
+                return true;
             }
-            throw new NotImplementedException("Did not Create Object");
+            else
+            {
+                return false;
+            }
+            
         }
         public void AddToBuffer(object addObj) 
         {
-            throw new NotImplementedException("Did not Create Object");
+            if (Buffer[Buffer.Length - 1] == null) 
+            {
+                for (int i = 0; i < Buffer.Length; i++)
+                {
+                    if (Buffer[i] == null) 
+                    {
+                        Buffer[i] = addObj;
+                        Newest = i;
+                        return;
+                    }
+
+                }
+
+            }
+            if (Newest == Buffer.Length - 1)
+            {
+                Buffer[0] = addObj;
+                Newest = 0;
+            }
+            else
+            {
+                Buffer[Newest + 1] = addObj;
+                Newest++;
+            }
         }
+           
         public void PrintOldest() 
         {
             throw new NotImplementedException("Did not Create Object");
