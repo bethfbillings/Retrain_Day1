@@ -1,3 +1,4 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Xunit;
 
@@ -13,7 +14,7 @@ namespace CircularBuffer.Test
         public void CreateCircularBufferIsTrue(int size)
         {
             //arrange
-            var result = new CircularBuffer().SizeBuffer(size);
+            var result = new CircularBuffer().CreateBuffer(size);
 
             //act
 
@@ -21,5 +22,43 @@ namespace CircularBuffer.Test
             //assert
             Assert.True(result);
         }
+
+        [Fact]
+        public void AddToBufferTest()
+        {
+            //arrange
+            var buffer = new CircularBuffer();
+            var secBuffer = new CircularBuffer().CreateBuffer(6);
+            var thirdBuffer = new CircularBuffer().CreateBuffer(6);
+
+            //act
+            buffer.AddToBuffer(4);
+
+            //assert
+            Assert.NotNull(buffer);
+        }
+        public void PrintOldestTest()
+        {
+            //arrange
+
+
+            //act
+
+
+            //assert
+
+
+        }
+        public void PrintBufferTest()
+        {
+            //arrange
+
+
+            //act
+
+
+            //assert
+        }
     }
 }
+
